@@ -17,7 +17,7 @@ script:
     - "1"
     <%- if num_cores.to_i >=6||num_memory.to_i >= 32 -%>
     - "-p"
-    - "<%= cpu_partition %>"
+    - "<%= partition %>"
     <%- else -%>
     - "--reservation"
     - "<%= reservation %>"

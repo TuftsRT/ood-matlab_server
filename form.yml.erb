@@ -1,7 +1,7 @@
 ---
 cluster: "pax"
 form:
-  - cpu_partition
+  - partition
   - bc_num_hours
   - num_cores
   - num_memory
@@ -10,18 +10,8 @@ form:
   - reservation
 
 attributes:
-  cpu_partition:
-    widget: "select"
-    label: "Select cpu partition"
-    help: "NOTE: Selecting partition is optional. Please do not choose specific lab partitions if you are not a member of that lab."
-    value: "batch"
-    options:
-      - ["batch","batch"]
-      - ["largemem", "largemem"]
-      - ["preempt", "preempt"]
-      - ["patralab", "patralab"]
-      - ["llab", "llab"]
 
+<%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/cpu_partition.yml").indent(2) %>
 <%- if ["jni03", "mpower11", "ymalon01","kokano02"].include? ENV["USER"] %>
 <%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/xlarge/num_cores.yml").indent(2) %>
 <%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/xlarge/num_memory.yml").indent(2) %>
@@ -39,7 +29,7 @@ attributes:
     label: "Matlab version"
     help: "This defines the version of Matlab you want to load."
     options:
-      - [ "R2023b", "matlab/2023b matlab-proxy/0.24.2" ]
+      - [ "R2025a", "matlab/R2025a matlab-proxy/0.25.1" ]
   module:
     widget: text_field
     label: "Load Supporting Modules"
