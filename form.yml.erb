@@ -10,19 +10,9 @@ form:
   - reservation
 
 attributes:
-
 <%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/cpu_partition.yml").indent(2) %>
-<%- if ["jni03", "mpower11", "ymalon01","kokano02"].include? ENV["USER"] %>
-<%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/xlarge/num_cores.yml").indent(2) %>
-<%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/xlarge/num_memory.yml").indent(2) %>
-<%- elsif system("groups $USER | grep -i aldridgelab >/dev/null 2>&1") %>
-<%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/aldridgelab/num_cores.yml").indent(2) %>
-<%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/aldridgelab/num_memory.yml").indent(2) %>
-<%- else %>
-<%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/xlarge/num_cores.yml").indent(2) %>
-<%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/large/num_memory.yml").indent(2) %>
-<%- end -%>
-<%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/reservation.yml").indent(2) %>
+<%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/num_cores_generic.yml").indent(2) %>
+<%= File.read("/etc/ood/config/apps/dashboard/batch_connect/partials/num_memory_generic.yml").indent(2) %>
 
   version:
     widget: select
